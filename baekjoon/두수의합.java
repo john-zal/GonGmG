@@ -12,12 +12,15 @@ public class 두수의합 {
         String num = br.readLine();
         int x = Integer.parseInt(br.readLine());
         String[] arr = num.split(" ");
-        int[] all = new int[2000000];
-        for(int i = 0; i < arr.length; i++){
-            
-        }
+        int[] all = new int[2000001];
         int answer = 0;
-        
+        for(int i = 0; i < arr.length; i++){
+            int input = Integer.parseInt(arr[i]);
+            all[input]++;
+            if(x>input){
+                answer += all[x-input];
+            }
+        }
         bw.write(String.valueOf(answer));
         bw.close();
     }
