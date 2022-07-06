@@ -5,10 +5,10 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class 수정렬하기 {
+public class 수정렬하기4 {
     static int n;
-    static int[] arr = new int[1001];
-    static int[] temp = new int[1001];
+    static int[] arr = new int[1000001];
+    static int[] temp = new int[1000001];
 
     static void merge(int st, int en){
         int mid = (st+en)/2;
@@ -18,7 +18,7 @@ public class 수정렬하기 {
         for(int i = st; i < en; i++) {
             if(ridx == en) temp[i] = arr[lidx++];
             else if(lidx == mid) temp[i] = arr[ridx++];
-            else if(arr[lidx] <= arr[ridx]) temp[i] = arr[lidx++];
+            else if(arr[lidx] >= arr[ridx]) temp[i] = arr[lidx++];
             else temp[i] = arr[ridx++];
         }
 
