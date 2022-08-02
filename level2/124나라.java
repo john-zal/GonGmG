@@ -1,4 +1,4 @@
-package level2;
+package GonGmG.level2;
 
 class Solution {
     public String solution(int n) {
@@ -26,7 +26,4 @@ class Solution {
 
         return answer = String.valueOf(num-minu).replaceAll("3", "4");
     }
-}
-public class 124나라 {
-    
 }
