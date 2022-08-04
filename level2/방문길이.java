@@ -20,8 +20,8 @@ class Solution {
                         point[present[0]][present[1]-1] += "2";
                         point[present[0]][present[1]] += "4";
                     }
-                    break;
                 }
+                    break;
                 case 'D' : if(present[1] - 1 >= 0) {
                     present[1]--;
                     if(!point[present[0]][present[1]].contains("2") && !point[present[0]][present[1]+1].contains("4")) {
@@ -29,8 +29,8 @@ class Solution {
                         point[present[0]][present[1]+1] += "4";
                         point[present[0]][present[1]] += "2";
                     }
-                    break;
                 }
+                    break;
                 case 'R' : if(present[0] + 1 < 11) {
                     present[0]++;
                     if(!point[present[0]][present[1]].contains("1") && !point[present[0]-1][present[1]].contains("3")) {
@@ -38,8 +38,8 @@ class Solution {
                         point[present[0]-1][present[1]] += "3";
                         point[present[0]][present[1]] += "1";
                     }
-                    break;
                 }
+                    break;
                 case 'L' : if(present[0] - 1 >= 0) {
                     present[0]--;
                     if(!point[present[0]][present[1]].contains("3") && !point[present[0]+1][present[1]].contains("1")) {
@@ -47,14 +47,16 @@ class Solution {
                         point[present[0]+1][present[1]] += "1";
                         point[present[0]][present[1]] += "3";
                     }
-                    break;
                 }
+                    break;
             }
         }
-
         return answer;
     }
 }
 public class 방문길이 {
-    
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        System.out.println(s.solution(""))
+    }
 }
