@@ -23,14 +23,12 @@ class Solution {
                         return answer;
                 }
             }
-            if (i == arr.size()-1) {
+            if (i == arr.size()-1) //테스트 케이스 2, 5, 18번 의 경우해결을 위해 필요. 마지막 원소가 하나만 남았을 경우 두번째 for문으로 들어가지 못해 마지막 남은 문서를 출력하지 못해 answer의 값이 1 모자라게 됨.
                 return ++answer;
-            }
         }
         return answer;
     }
 }
-
 public class 프린터 {
     
 }
