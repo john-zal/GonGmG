@@ -1,4 +1,4 @@
-package level2;
+package GonGmG.level2;
 
 class Solution{
     public int solution(int [][]board){
