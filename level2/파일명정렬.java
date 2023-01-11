@@ -55,7 +55,7 @@ class Solution {
         });
         Collections.sort(arr, new Comparator<File>() {
             public int compare(File f1,File f2) {
-                return f1.get_head().compareTo(f2.get_head());
+                return f1.get_head().toLowerCase().compareTo(f2.get_head().toLowerCase());
             }
         });
 
