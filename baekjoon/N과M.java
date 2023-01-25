@@ -34,9 +34,6 @@ public class N과M  {
         n = Integer.parseInt(nm[0]);
         m = Integer.parseInt(nm[1]);
 
-        for(int i = 0; i < isused.length; i++){
-            isused[i] = false;
-        }
         fun(0);
         
         bw.close();
