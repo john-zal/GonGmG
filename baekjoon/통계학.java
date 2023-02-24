@@ -1,50 +1,75 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.*;
 
 public class 통계학 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] number = new int[n];
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String numnum = br.readLine();
+        int[] arr = new int[Integer.parseInt(numnum)]; 
+        for(int i = 0; i  < Integer.parseInt(numnum); ++i)
+            arr[i] = Integer.parseInt(br.readLine());
+
+        Arrays.sort(arr);
+
         int average = 0;
-        for(int i = 0; i < n; i++){
-            number[i] = sc.nextInt();
-            average += number[i];
+        int midvalue = 0;
+        int frequency = 0;
+        int range = 0;
+        
+        midvalue = arr[arr.length/2];
+        range = arr[arr.length-1] - arr[0];
+
+        int sum = arr[arr.length-1];
+        HashMap<Integer,Integer> map = new HashMap<>();
+        map.put(arr[arr.length-1],1);
+
+        for(int i = 0 ; i < arr.length-1; ++i) {
+            sum += arr[i];
+            
+            if(map.get(arr[i]) == null) 
+                map.put(arr[i],1);
+            else 
+                map.put(arr[i],map.get(arr[i])+1);
         }
-        Arrays.sort(number);
-        average = Math.round((float)average/n);
-        int mid = number[n/2];
-        int range = number[n-1] - number[0];
-        int max1 = 0;
-        int max2 = 0;
-        int max = number[0];
-        for(int i = 0; i < n-1; i++){
-            if(number[i] == number[i+1]){
-                max1++;
+        average = (int)Math.round((double)sum/(double)arr.length);
+
+        List<HashMap.Entry<Integer, Integer>> entryList = new LinkedList<>(map.entrySet());
+        entryList.sort(new Comparator<HashMap.Entry<Integer, Integer>>() {
+            @Override
+            public int compare(HashMap.Entry<Integer, Integer> o1, HashMap.Entry<Integer, Integer> o2) {
+                return o2.getValue() - o1.getValue();
             }
-            else if(number[i] != number[i+1]){
-                if(max1 >= max2){
-                    max2 = max1;
-                }
-                max1 = 0;
+        });
+
+        int  flag = 0;
+        ArrayList<Integer> fre = new ArrayList<>();
+
+        for(Map.Entry<Integer, Integer> entry : entryList){
+            if(flag == 0)
+                fre.add(entry.getKey());
+            else {
+                if(entry.getValue() == map.get(fre.get(0)))
+                    fre.add(entry.getKey());
+                else
+                    break;
+                
             }
+            ++flag;
         }
-        int nu = 0;
-        max1 = 0;
-        for(int i = 0; i < n - 1; i++){
-            if(number[i] == number[i+1]){
-                max1++;
-            }
-            else if(number[i]!=number[i+1])
-                max1 = 0;
-            if(max1 == max2 ){
-                max = number[i];
-                nu++;
-            }
-            if(nu==2)
-                break;
-        }
-        System.out.println(average + "\n" + mid + "\n" + max + "\n" + range);
-        sc.close();
+        Collections.sort(fre);
+        if(fre.size() > 1)
+            frequency = fre.get(1);
+        else
+            frequency = fre.get(0);
+
+        bw.write(String.valueOf(average) + "\n" + String.valueOf(midvalue)
+             + "\n" + String.valueOf(frequency) + "\n" + String.valueOf(range));
+        
+        bw.close();
     }
 }
