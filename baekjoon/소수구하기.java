@@ -13,8 +13,7 @@ public class 소수구하기 {
         int m = Integer.parseInt(nm[1]);
 
         boolean[] number = new boolean[m+1];
-        int score = 0;
-
+        
         for(; n <= m; ++n) {
             if(!number[n]) {
                 if(primary(n)) {
