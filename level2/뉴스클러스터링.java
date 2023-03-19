@@ -32,7 +32,7 @@ class Solution {
             for(int i = 0; i < arr1.size(); ++i ) {
                 if(arr2.contains(arr1.get(i))) {
                     ++intersection;
-                    arr2.set(arr2.indexOf(arr1.get(1)),"A");
+                    arr2.set(arr2.indexOf(arr1.get(i)),"A");
                 }
             }
         }
@@ -40,7 +40,7 @@ class Solution {
             for(int i = 0; i < arr2.size(); ++i ) {
                 if(arr1.contains(arr2.get(i))){ 
                     ++intersection;
-                    arr1.set(arr1.indexOf(arr2.get(1)),"A");
+                    arr1.set(arr1.indexOf(arr2.get(i)),"A");
                 }
             }
         }
