@@ -13,6 +13,3 @@ class Solution {
         return dp[n]%1000000007;
     }
 }
-public class 2xn타일링 {
-    
-}
