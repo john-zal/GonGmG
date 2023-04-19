@@ -9,6 +9,19 @@ import java.util.Iterator;
 
 public class 가로수 {
 
+    static int euclidean(int n, int m) {
+        int extra = Math.max(n,m)%Math.min(n,m);
+        if(extra == 0)
+            return Math.min(n,m);
+        
+        n = Math.min(n,m);
+        while(extra != 0) {
+            int temp = extra;
+            extra = n%extra;
+            n = temp;
+        }
+        return n;
+    }
     static int max_common_divisor(int n, int m) {
         int min = Math.min(n,m);
         for(int i = min; i > 1; --i) {
@@ -37,7 +50,7 @@ public class 가로수 {
         int min_between_tree = iter.next();
 
         while(iter.hasNext()) 
-            min_between_tree = max_common_divisor(iter.next(),min_between_tree);
+            min_between_tree = euclidean(iter.next(),min_between_tree);
         
         int range = existing_tree[existing_tree.length-1] - existing_tree[0];
         bw.write(range/min_between_tree-n+1+"");
