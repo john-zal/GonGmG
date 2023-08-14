@@ -7,7 +7,7 @@ import java.util.HashMap;
 class Solution {
     public int[] solution(String[] id_list, String[] report, int k) {
         int[] answer = new int[id_list.length];
-        HashMap<String,ArrayList> map = new HashMap<>();
+        HashMap<String,ArrayList<String>> map = new HashMap<>();
         HashMap<String,Integer> id_index = new HashMap<>();
         ArrayList<String> arr = new ArrayList<>();
         Arrays.sort(report);
