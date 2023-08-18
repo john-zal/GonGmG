@@ -5,16 +5,13 @@
 
 int compare(const void *a , const void *b) 
 { 
-     if( *(int*)a > *(int*)b )
-
+    if( *(int*)a > *(int*)b )
         return (1);
 
     else if( *(int*)a < *(int*)b )
-
         return (-1);
 
     else
-
         return (0);
 }
 
@@ -32,10 +29,11 @@ void    cnt_partner(int *w, int n)
 long long solution(int weights[], size_t weights_len) {
     long long answer = 0;
     int partner[2001];
-    int cnt;
+    int cnt = 1;
     
     qsort(weights , weights_len , sizeof(weights[0]) , compare);
-
+    for (int i = 0; i < 2001; ++i)
+        partner[i] = 0;
     for (int i = 0; i < weights_len; ++i)
     {
         cnt_partner(partner, weights[i]);
@@ -43,13 +41,14 @@ long long solution(int weights[], size_t weights_len) {
     }
     for (int i = 0; i < weights_len; ++i)
     {
-        cnt = 0;
-        if (weights[i] == weights[i + 1])
+        while (i < weights_len && (weights[i] == weights[i + 1]))
         {
             cnt++;
-            continue ;
+            i++;
         }
-        answer += (cnt * (cnt - 1));
+        while (--cnt > 0)
+            answer += cnt;
+        cnt = 1;
     }
     return (answer);
 }
