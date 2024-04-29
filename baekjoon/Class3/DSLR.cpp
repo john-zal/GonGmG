@@ -1,6 +1,5 @@
 #include <iostream>
 #include <queue>
-#include <vector>
 
 void	inttoarray(int num, int *ret)
 {
